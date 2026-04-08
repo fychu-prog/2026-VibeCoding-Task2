@@ -147,6 +147,65 @@
         .section-about {
             background-color: var(--bg-dark-light);
         }
+        .about-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-description {
+            margin-bottom: 1.5rem;
+        }
+        .about-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .about-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        .about-list li::before {
+            content: "▹";
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .about-image {
+            flex: 1;
+        }
+        .about-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        .btn-outline:hover {
+            background-color: rgba(0, 173, 181, 0.1);
+        }
         /* CSS:ABOUT-END */
 
         /* CSS:SKILLS-START */
@@ -185,6 +244,12 @@
 
             .hero-title {
                 font-size: 4rem;
+            }
+
+            /* About 區轉為雙欄 */
+            .about-flex {
+                flex-direction: row;
+                align-items: center;
             }
         }
 
@@ -228,10 +293,27 @@
             </section>
             <section id="about" class="section section-about" aria-labelledby="about-heading">
                 <div class="container">
-                    <h2 id="about-heading" class="section-title">關於我（佔位區塊）</h2>
-                    <p>這裡目前是 About 區的占位內容。之後會放入您的個人背景、熱情所在以及為什麼選擇前端開發的故事。</p>
-                    <p><em>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。</em></p>
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="在筆電前工作的開發者示意圖" loading="lazy" style="margin-top: 2rem;">
+                    <div class="about-flex">
+                        <div class="about-text">
+                            <h2 id="about-heading" class="section-title">關於我</h2>
+                            <div class="about-description">
+                                <p>我目前擔任<strong>統計分析師</strong>，專注於數據背後的邏輯與規律，致力於透過程式化流程提升數據洞察的效率。我精通數據清洗、統計建模，並將這些嚴謹的邏輯應用於前端開發中。</p>
+                                <p>在專業領域外，我深受<strong>流行病學分析</strong>的吸引，喜歡探索群體健康與數據之間的關聯。此外，<strong>室內抱石</strong>是我放鬆心情、挑戰自我的方式，這種需要冷靜觀察與爆發力的運動，正如同我處理複雜分析任務時的風格。</p>
+                            </div>
+                            <ul class="about-list">
+                                <li><strong>精確分析</strong>：擅長運用統計模型協助決策流程。</li>
+                                <li><strong>跨領域整合</strong>：將流行病學知識轉化為視覺化數據儀表板。</li>
+                                <li><strong>解決問題</strong>：像攀登岩牆一樣，拆解複雜目標並循序漸進達成。</li>
+                            </ul>
+                            <div class="about-actions">
+                                <a href="#projects" class="btn btn-primary">查看作品集</a>
+                                <a href="#contact" class="btn btn-outline">聯絡我</a>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=800&auto=format&fit=crop" alt="專注於電腦數據分析的工程師與攀岩者的意志象徵" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </section>
             <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
