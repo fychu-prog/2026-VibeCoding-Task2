@@ -1,37 +1,274 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finley · Frontend Developer | 個人品牌網站</title>
+    <meta name="description" content="這是 Finley 的個人品牌網站，內容包含前端開發技術分享、作品集展示以及專業技能介紹。透過這個網站，您可以深入瞭解我的開發背景與聯絡方式。">
+    
+    <style>
+        /* CSS:BASE-START */
+        /* 全站共用設定：重設、顏色變數與基礎排版 */
+        :root {
+            --primary-color: #00adb5;
+            --primary-hover: #00d1db;
+            --bg-dark: #222831;
+            --bg-dark-light: #393e46;
+            --text-light: #eeeeee;
+            --text-muted: #b2bec3;
+            --container-padding: 20px;
+            --max-width: 1140px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* 導覽列樣式 */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(34, 40, 49, 0.95);
+            border-bottom: 1px solid var(--bg-dark-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* 頁尾樣式 */
+        .site-footer {
+            background-color: #1a1a1a;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        /* CSS:BASE-END */
+
+        /* CSS:HERO-START */
+        .section-hero {
+            background: linear-gradient(rgba(34, 40, 49, 0.8), rgba(34, 40, 49, 0.8)), 
+                        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1440&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-placeholder-hint {
+            border: 2px dashed var(--primary-color);
+            padding: 20px;
+            margin-top: 30px;
+            background: rgba(0, 173, 181, 0.1);
+        }
+        /* CSS:HERO-END */
+
+        /* CSS:ABOUT-START */
+        .section-about {
+            background-color: var(--bg-dark-light);
+        }
+        /* CSS:ABOUT-END */
+
+        /* CSS:SKILLS-START */
+        .section-skills {
+            background-color: var(--bg-dark);
+        }
+        /* CSS:SKILLS-END */
+
+        /* CSS:PROJECTS-START */
+        .section-projects {
+            background-color: var(--bg-dark-light);
+        }
+        /* CSS:PROJECTS-END */
+
+        /* CSS:CONTACT-START */
+        .section-contact {
+            background-color: var(--bg-dark);
+        }
+        .contact-placeholder-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        /* CSS:CONTACT-END */
+
+        /* CSS:RWD-START */
+        /* 手機優先：預設單欄，平板以上寬度調整 */
+        @media (min-width: 768px) {
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                padding: 0;
+            }
+        }
+        /* CSS:RWD-END */
+    </style>
 </head>
 <body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
+    <div class="page">
+        <header class="site-header">
+            <div class="container">
+                <nav class="nav">
+                    <a href="#hero" class="nav-logo">Finley · Frontend Dev</a>
+                    <ul class="nav-list">
+                        <li><a href="#about" class="nav-link">關於我</a></li>
+                        <li><a href="#skills" class="nav-link">技能</a></li>
+                        <li><a href="#projects" class="nav-link">作品集</a></li>
+                        <li><a href="#contact" class="nav-link">聯絡我</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="hero" class="section section-hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="hero-title">建立個人品牌的新篇章</h1>
+                        <p>這裡是個人品牌網站的主視覺區。之後會用來放置一句話自我介紹、核心職稱（例如：前端開發工程師）以及行動呼籲按鈕。</p>
+                        <div class="hero-placeholder-hint">
+                            <p><strong>教練提示：</strong></p>
+                            <p>之後會用 Section SDD 的 Prompt 產生正式文案與版面，再把整個 section 貼回來取代這一區。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="about" class="section section-about" aria-labelledby="about-heading">
+                <div class="container">
+                    <h2 id="about-heading" class="section-title">關於我（佔位區塊）</h2>
+                    <p>這裡目前是 About 區的占位內容。之後會放入您的個人背景、熱情所在以及為什麼選擇前端開發的故事。</p>
+                    <p><em>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。</em></p>
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="在筆電前工作的開發者示意圖" loading="lazy" style="margin-top: 2rem;">
+                </div>
+            </section>
+            <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
+                <div class="container">
+                    <h2 id="skills-heading" class="section-title">專業技能（佔位區塊）</h2>
+                    <p>這裡未來會展示您的技術棧（例如：HTML, CSS, JavaScript, React 等）。</p>
+                    <p><em>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。</em></p>
+                </div>
+            </section>
+            <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
+                <div class="container">
+                    <h2 id="projects-heading" class="section-title">精選作品（佔位區塊）</h2>
+                    <p>這裡將展示您的開發專案，包含專案說明、技術細節與 Demo 連結。</p>
+                    <p><em>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。</em></p>
+                </div>
+            </section>
+            <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+                <div class="container">
+                    <h2 id="contact-heading" class="section-title">聯絡我（佔位區塊）</h2>
+                    <p>有興趣合作或是有任何問題嗎？歡迎透過以下管道聯繫我：</p>
+                    <div style="margin: 20px 0;">
+                        <a href="mailto:hello@example.com" class="contact-placeholder-link">Email</a>
+                        <a href="https://github.com/yourname" class="contact-placeholder-link" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/yourname" class="contact-placeholder-link" target="_blank">LinkedIn</a>
+                        <a href="tel:+886900000000" class="contact-placeholder-link">電話</a>
+                    </div>
+                    <p><em>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。</em></p>
+                </div>
+            </section>
+            </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2026 Finley · Frontend Developer. 版權所有。</p>
+            </div>
+        </footer>
+    </div>
+
 </body>
 </html>
